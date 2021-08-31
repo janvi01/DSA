@@ -46,7 +46,7 @@ void insertatgivenpos(int x, int n)
 void display(Node *head)
 {
     Node *p = head;
-    while (p->next != NULL)
+    while (p != NULL)
     {
         cout << p->data << "\n";
         p = p->next;

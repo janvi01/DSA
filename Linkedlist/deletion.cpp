@@ -37,7 +37,7 @@ void deletenode(int n)
 void display()
 {
     Node *p = head;
-    while (p->next != NULL)
+    while (p != NULL)
     {
         cout << p->data << "\n";
         p = p->next;
