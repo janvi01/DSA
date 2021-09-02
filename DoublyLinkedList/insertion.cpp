@@ -23,6 +23,23 @@ void Insertathead(int x)
     newnode->next = head;
     head = newnode;
 }
+void Insertatend(int x){
+    Node *newnode = new Node;
+    newnode->data = x;
+    newnode->next = NULL;
+    newnode->prev = NULL;
+    if (head == NULL)
+    {
+        head = newnode;
+        return;
+    }
+    Node* p=head;
+    while(p->next!=NULL){
+        p=p->next;
+    }
+    newnode->prev=p;
+    p->next=newnode;
+}
 void display()
 {
     Node *temp = head;
@@ -30,6 +47,23 @@ void display()
     {
         cout << temp->data << "\n";
         temp = temp->next;
+    }
+}
+void displayreverse()
+{
+    Node *temp = head;
+    cout<<"DLL --> \n";
+    while (temp->next != NULL)
+    {
+        cout << temp->data << "\n";
+        temp = temp->next;
+    }
+    cout << temp->data << "\n";
+    cout<<"Reverse DLL -->\n ";
+    while (temp != NULL)
+    {
+        cout << temp->data << "\n";
+        temp = temp->prev;
     }
 }
 int main()
@@ -44,7 +78,9 @@ int main()
         cin >> x;
         Insertathead(x);
     }
+    Insertatend(0);
     display();
+    displayreverse();
 
     return 0;
 }
