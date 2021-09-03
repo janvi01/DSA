@@ -40,6 +40,7 @@ int Top()
     Node *temp = head;
     return temp->data;
 }
+void isEmpty(){}
 
 void print()
 {
