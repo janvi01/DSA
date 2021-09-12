@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stack>
 using namespace std;
+//check for balancing of parenthesis in any expression using stack
 
 bool check(string str, int n)
 {
