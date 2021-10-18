@@ -43,6 +43,16 @@ void insert(int x)
         tail->right = p;
     }
 }
+
+bool search(Node *p, int key){
+    if(key==p->data)
+    return true;
+    else if(key>p->data)
+    search(p->right, key);
+    else
+    search(p->left, key);
+    return false;
+}
 void inordertraverse(Node *p)
 {
     if (p)
@@ -62,5 +72,9 @@ int main()
     insert(11);
     insert(12);
     inordertraverse(root);
+    if(search(root, 11))
+    cout<<"Found\n";
+    else
+    cout<<"Not Found\n";
     return 0;
 }
