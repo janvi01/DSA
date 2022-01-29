@@ -10,6 +10,9 @@ struct Node
 };
 Node *root = NULL;
 
+Node* getRoot(){
+    return root;
+}
 void insert(int x)
 {
     Node *temp = root; //Searching pointer
@@ -43,16 +46,6 @@ void insert(int x)
         tail->right = p;
     }
 }
-
-bool search(Node *p, int key){
-    if(key==p->data)
-    return true;
-    else if(key>p->data)
-    search(p->right, key);
-    else
-    search(p->left, key);
-    return false;
-}
 void inordertraverse(Node *p)
 {
     if (p)
@@ -60,6 +53,32 @@ void inordertraverse(Node *p)
         inordertraverse(p->left);
         cout << p->data << " ";
         inordertraverse(p->right);
+    }
+}
+Node* iterativeSearch(int key) {
+    Node* t = root;
+    while (t != nullptr){
+        if (key == t->data){
+            return t;
+        } else if (key < t->data){
+            t = t->left;
+        } else {
+            t = t->right;
+        }
+    }
+    return nullptr;
+}
+Node* recursiveSearch(Node *p, int key){
+    if (p == nullptr){
+        return nullptr;
+    }
+ 
+    if (key == p->data){
+        return p;
+    } else if (key < p->data){
+        return recursiveSearch(p->left, key);
+    } else {
+        return recursiveSearch(p->right, key);
     }
 }
 
@@ -72,9 +91,18 @@ int main()
     insert(11);
     insert(12);
     inordertraverse(root);
-    if(search(root, 11))
-    cout<<"Found\n";
-    else
-    cout<<"Not Found\n";
+    //iterative search
+    Node* temp = iterativeSearch(3);
+    if (temp != nullptr){
+        cout << "Element found\n"<<temp->data << endl;
+    } else {
+        cout << "Element not found" << endl;
+    }
+    //recursive search
+    if ((recursiveSearch(getRoot(), 11)) != nullptr){
+        cout << temp->data << endl;
+    } else {
+        cout << "Element not found" << endl;
+    }
     return 0;
 }
